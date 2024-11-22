@@ -1,33 +1,5 @@
- Makina Öğrenmesi İle CNC Freze Hatalarını Tahmin Etme
-
- Üzerinde çalıştığım gerçek zamanlı ölçümlerden elde edilmiş verilerle
- çeşitli makina öğrenmesi (ML) modelleri kullanarak hata tahminlerinde bulundum.
- Veri setinde bulunan;
- -Spindle devri(rpm) (2860W güce sahip bir motorun dönüş hızı)
- -Tork(Nm) (Uygulanan tork değeri)
- -Takım aşınması(dk) (H/M/L kalite çeşidine dair 5/3/2 dakikalık takım aşınması ekler.)
- -Hava sıcaklığı (°C) (Bulunulan ortam sıcaklığı)
- -Proses sıcaklığı(°C) (Proses işlem sıcaklığı)
- Girdi değerleri olarak kullanılmıştır. Çıktı değeri ise 
- -hata var/yok
- Burada hataya sebep olan 5 unsur; takım aşınma hatası, hava ve ortam ısı dağılımı hatası, uygulanan güç hatası,
- takım gerilme hatası ve rastgele başarısızlıkla sonuçlanan hatalardır. 
- 
- Veri setinin çıktı şekli baz alınarak Lojistik Regreson, XGBoost, Karar Ağacı, Rastgele Orman Sınıflandırma
- modelleri tek tek denendi ve en yüksek skoru elde eden Rastgele Orman Sınıflandırma(RFC) ile devam edildi.
- Bu modelin tahminini iyileştirme amaçlı Rastgele Izgara Araması da (RGS-CV) uygulanarak elde ettiğimiz skor 
- %98.13'den %98.26 seviyesine çıktı.
-
- Modele girdi olarak verilen değerler kullanılarak %98.26 doğrulukla çıktı değeri tahmin edilebiliyor.
-
- Grafikler yorumlanarak çıkarılan bazı sonuçlar;
- -Korelasyon matrisine göre takım aşınması ve tork, hata üzerinde en çok etkiye sahiptir. 
- Ayrıca devir hızı artması, tork üzerinde negatif etkiye sahip.
- -Modelin tahmin yaparken en çok kullandığı özellik tork ve devir hızıdır. Bu bir çeşit tahmin katsayısıdır.
- -Karmaşıklık matrisine göre doğru bulunduğumuz tahminler %89.1 oranında kesinliğe sahip.    
-
-Görsellerde girdi ve çıktının histogram dağılımını, özellik seçimi grafiğini, korelasyon grafiğini,
-çapraz doğrulama skorlarını ve optimizasyondan önce ve sonraki değerleri görebilirsiniz.
-
-
- 
+Bu çalışmada CNC freze hatalarını gerçek zamanlı ölçümlerden 
+elde edilen verilerle tahmin etmek amacıyla farklı makine öğrenmesi (ML) 
+modelleri test edilmiş ve karşılaştırılmıştır. En iyi performans gösteren model, 
+Rastgele Orman Sınıflandırması (Random Forest Classifier - RFC) optimize edilerek 
+hata tahmin performansı artırılmıştır.
