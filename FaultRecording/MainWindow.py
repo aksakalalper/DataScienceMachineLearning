@@ -84,6 +84,12 @@ class Ui_MainWindow(object):
         self.manualEntryButton.setObjectName("manualEntryButton")
         self.manualEntryButton.setStyleSheet("background-color: orange; color: white;")  # Style the button
 
+        self.versionLabel = QtWidgets.QLabel(self.centralwidget)
+        self.versionLabel.setGeometry(QtCore.QRect(700, 10, 80, 20))  # Adjust position and size
+        self.versionLabel.setObjectName("versionLabel")
+        self.versionLabel.setText("v1.0")
+        self.versionLabel.setAlignment(QtCore.Qt.AlignRight | QtCore.Qt.AlignVCenter)  # Align text to the right
+
         MainWindow.setCentralWidget(self.centralwidget)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
         self.statusbar.setObjectName("statusbar")
